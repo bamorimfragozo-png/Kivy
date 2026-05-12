@@ -1,0 +1,151 @@
+ScreenManager:
+    Dashboard:
+
+<Dashboard>:
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 1  # Fundo Branco
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 10
+        spacing: 15
+
+        # --- Topo: Foto e Identificação ---
+        BoxLayout:
+            size_hint_y: 0.25
+            spacing: 10
+            
+            BoxLayout: # Espaço da Foto
+                size_hint_x: 0.2
+                canvas.before:
+                    Color:
+                        rgba: 0, 0, 0, 1
+                    Line:
+                        width: 1.5
+                        rounded_rectangle: (self.x, self.y, self.width, self.height, 10)
+                Label:
+                    text: "FOTO"
+                    color: 0, 0, 0, 1
+
+            BoxLayout: # Dados do Aluno
+                orientation: 'vertical'
+                padding: 10
+                canvas.before:
+                    Color:
+                        rgba: 0, 0, 0, 1
+                    Line:
+                        width: 1.5
+                        rounded_rectangle: (self.x, self.y, self.width, self.height, 10)
+                Label:
+                    text: "Nome: João Silva                    Matrícula: 2024001"
+                    color: 0, 0, 0, 1
+                    halign: 'left'
+                    text_size: self.size
+                Label:
+                    text: "Série: 3º Ano Ensino Médio Técnico"
+                    color: 0, 0, 0, 1
+                    halign: 'left'
+                    text_size: self.size
+
+        # --- Meio: Disciplinas, Gráficos e Médias ---
+        BoxLayout:
+            size_hint_y: 0.65
+            spacing: 10
+
+            # Coluna Esquerda: Disciplinas
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_x: 0.25
+                padding: 5
+                canvas.before:
+                    Color:
+                        rgba: 0, 0, 0, 1
+                    Line:
+                        width: 1.5
+                        rounded_rectangle: (self.x, self.y, self.width, self.height, 10)
+                Label:
+                    text: "Disciplinas\\n(Ordenado por...)"
+                    color: 0,0,0,1
+                    halign: 'center'
+                Button:
+                    text: "Nota"
+                    size_hint_y: 0.15
+                Button:
+                    text: "Frequência"
+                    size_hint_y: 0.15
+
+            # Coluna Central: Gráficos
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_x: 0.5
+                spacing: 10
+
+                BoxLayout: # Container Gráfico Linha
+                    id: grafico_linha
+                    canvas.before:
+                        Color:
+                            rgba: 0, 0, 0, 1
+                        Line:
+                            width: 1.5
+                            rounded_rectangle: (self.x, self.y, self.width, self.height, 10)
+                
+                BoxLayout:
+                    spacing: 10
+                    BoxLayout: # Container Gráfico Barra
+                        id: grafico_barra
+                        canvas.before:
+                            Color:
+                                rgba: 0, 0, 0, 1
+                            Line:
+                                width: 1.5
+                                rounded_rectangle: (self.x, self.y, self.width, self.height, 10)
+                    
+                    BoxLayout: # Médias Globais
+                        orientation: 'vertical'
+                        canvas.before:
+                            Color:
+                                rgba: 0, 0, 0, 1
+                            Line:
+                                width: 1.5
+                                rounded_rectangle: (self.x, self.y, self.width, self.height, 10)
+                        Label:
+                            text: "Global\\n\\nMédia N. Comum\\nMédia N. Técnico\\nMédia Global"
+                            color: 0,0,0,1
+                            font_size: '12sp'
+                            halign: 'center'
+
+            # Coluna Direita: Observações e Navegação
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_x: 0.25
+                spacing: 10
+                canvas.before:
+                    Color:
+                        rgba: 0, 0, 0, 1
+                    Line:
+                        width: 1.5
+                        rounded_rectangle: (self.x, self.y, self.width, self.height, 10)
+                
+                Label:
+                    text: "Observações +"
+                    color: 0,0,0,1
+                    size_hint_y: 0.1
+                
+                TextInput:
+                    text: "Espaço para notas do professor sobre o comportamento e evolução."
+                    readonly: True
+
+                # Botões de Navegação (Setas)
+                BoxLayout:
+                    size_hint_y: 0.2
+                    spacing: 5
+                    Button:
+                        text: "<"
+                    Button:
+                        text: "[ ]" # O "quadradinho" que você desenhou
+                    Button:
+                        text: ">"
