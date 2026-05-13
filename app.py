@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 from kivy.app import App
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.lang import Builder
-from kivy.garden.matplotlib.backend_kivyagg import FigureCanvasKivyAgg
+from kivy_garden.matplotlib.backend_kivyagg import FigureCanvasKivyAgg
 import matplotlib
 
 # Define o backend para o Matplotlib funcionar dentro do Kivy
@@ -40,7 +40,7 @@ class Dashboard(Screen):
 class StudentDashboardApp(App):
     def build(self):
         # Carrega o arquivo de design
-        return Builder.load_file('dashboard.kv')
+        return Builder.load_file('dash.kv')
 
 if __name__ == '__main__':
     StudentDashboardApp().run()
